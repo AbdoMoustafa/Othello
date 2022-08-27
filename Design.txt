@@ -1,0 +1,30 @@
+Implementation of the players : I created a separate function for each player. When one player is finished with their turn, the other players'
+function is called and they have their turn. These functions are the exact same except each one is assigned the opposite colour.
+
+Implementation of the board : I used a series of for loops to create the board. I used this as i found it easier to implement than using a struct.
+
+Implementation of the game logic : For this assignment, I created 2 separate function for each player, where the each function was called after the other player finished their turn. In my design,
+player 1 starts their turn by entering their co-ordinates, after this, each co-ordinate is checked in every direction, starting from the up direction.
+Each direction contains a function call to the next direction until the last direction has been reached, the bottom right direction. In this function,
+the new board is printed if there has been a valid move in at least one direction. In the case where there has not been a valid move in any direction,
+a checker function will be called to check if the player has any valid moves for their turn. If they do their function will be called (player1() or player2())
+and they will be asked to input another set of co-ordinates. However if no valid move is detected by the checker, the player must pass their turn and the
+other players' function will be called.
+
+
+Initialisation of the game elements : In a function named start(), I initialed the board. Using a for loop, iterated through every index of the 2D array
+and set it to be empty. After this, I filled in the 4 positions in the middle of the board as indicated in the instruction.
+
+Correct printing of the board : The structure of the board was created by using a series of for loops. The board is printed at the start of the game and
+after each direction is checked for a players' turn. This ensures correct printing as only the final result of the players turn is printed on the
+board to make sure validity is checked in each direction.
+
+Correct determination of the winner :
+if two players in a row pass their turn, this means that there are no possible moves available to any player and the game must end. The score() function
+is called and this is where the final score and winner will be determined, with the final result being written to a file.
+
+Similarly, if the board is full and contains no empty spaces, this mean that there are no possible moves available to any player and the game must end. the
+score() function is also called here.
+
+Writing of result of game to file on disk : After the result was determined, I used a file pointer and fopen() in order to successfully print the result
+into a .txt file. Following this, the programme is terminated as the game is now over
